@@ -12,4 +12,4 @@ Contributor:
 | :-----: |:-----:| :----: |:----: |:----: |
 | [HUANG-Haolun](https://github.com/HUANG-Haolun) | HUANG Haolun | mailto:hhuangbl@connect.ust.hk|feture-input |Input |
 |[JJHyeon25](https://github.com/JJHyeon25)|Ju Jong Hyeon|jjuab@connect.ust.hk |feature-process|Process|
-| [Xiaoyuanzi22333](https://github.com/XiaoYuanZi)  | HUANG Baixiang |bhuangak@connect.ust.hk |feature-output| Output|
+| [Xiaoyuanzi22333](https://github.com/Xiaoyuanzi22333)  | HUANG Baixiang |bhuangak@connect.ust.hk |feature-output| Output|
