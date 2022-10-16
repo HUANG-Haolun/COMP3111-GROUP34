@@ -15,10 +15,5 @@
 | [Xiaoyuanzi22333](https://github.com/Xiaoyuanzi22333)  | HUANG Baixiang|20761638 |bhuangak@connect.ust.hk |feature-output| Output|
 ***
 ## 
-## Document
-* [class diagram](https://github.com/HUANG-Haolun)
-* [use case diagram]()
-* use case specification for the assigned tasks  
-  - [input]()
-  - [process]() 
-  - [output]()
+## **Document**
+* [Activity1](doc/Activity1_Group34.pdf)
