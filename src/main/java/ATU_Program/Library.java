@@ -3,8 +3,40 @@
  */
 package ATU_Program;
 
-public class Library {
-    public boolean someLibraryMethod() {
-        return true;
-    }
+import java.io.*;
+import atu.input.*;
+//public class Library {
+//	public static void main(String[] args) {
+//
+//		String csvFile = ".\\csv\\Sample Student Data File.csv";
+//		UIApplication.read(csvFile);
+//		System.out.println("Hello");
+//		UIApplication.launch(args);
+//	}
+//}
+
+import java.io.*;
+import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+import atu.input.*;
+public class Library extends Exception{
+	public static void main(String[] args) throws Exception {
+		String csvFile = ".\\csv\\\\Sample Student Data File.csv";
+		UIApplication.read(csvFile);
+		System.out.println("ATU Program start!");
+		UIApplication.launch(UIApplication.class, args);
+	}
 }
+
