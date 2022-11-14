@@ -4,6 +4,9 @@
 package ATU_Program;
 
 public class Library {
+	public static void main(String[] arg) {
+		
+	}
     public boolean someLibraryMethod() {
         return true;
     }
