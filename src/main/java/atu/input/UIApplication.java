@@ -25,9 +25,9 @@ public class UIApplication extends Application {
     private final static ObservableList<Person> person_data = FXCollections.observableArrayList();
     public static final String delimiter = ",";
     public static final String quotation = "\"";
-    public static void read(String csvFile) {
-
+    public static PeopleList read(String csvFile) {
         System.out.print("\n");
+        PeopleList students = new PeopleList();
         try {
             File file = new File(csvFile);
             InputStreamReader isr = new InputStreamReader(new FileInputStream(file), "UTF-8");
@@ -42,7 +42,6 @@ public class UIApplication extends Application {
             int k3_tick1 = 0;
             int k3_tick2 = 0;
             int my_pref = 0;
-            PeopleList students = new PeopleList();
             while ((line = br.readLine()) != null) {
                 tempArr1 = line.split(quotation);
                 tempArr = tempArr1[4].split(delimiter);
@@ -94,6 +93,7 @@ public class UIApplication extends Application {
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
+        return students;
     }
     @Override
     public void start(Stage stage_stat) {

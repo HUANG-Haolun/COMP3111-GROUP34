@@ -10,6 +10,7 @@ public class PeopleList {
 	private int k3_trick1 = 0;
 	private int k3_trick2 = 0;
 	private int my_pref = 0;
+	private int size = 0;
 	List<Person> students = new ArrayList<>();
 	public PeopleList(){
 
@@ -64,5 +65,10 @@ public class PeopleList {
 
 	public void addStudent(Person p){
 		students.add(p);
+		size++;
+	}
+
+	public int size(){
+		return size;
 	}
 }
