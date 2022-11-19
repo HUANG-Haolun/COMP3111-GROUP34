@@ -21,7 +21,7 @@ public class Engine {
 		this.team_list = new Team[size/3];
 		//this.team_list = new ArrayList<>();
 		for (int i = 0; i < size; ++i)
-			this.list.set(i, input.get(i));
+			this.list.add(input.get(i));
 	}
 
 	public int getsize() {
@@ -53,57 +53,105 @@ public class Engine {
 	}
 
 	public void arrange_K1(List<Person> list){
-		List<Person> copy = list;
-		for (int i = 1; i < this.size; ++i) {
+		List<Person> copy = new ArrayList<>(list);
+		for (int i = 1; i < list.size(); ++i) {
 			int j = i - 1;
-			while (j >= 0 && copy.get(j+1).getK1energy() > copy.get(j).getK1energy()) {
-				Person temp = copy.get(j+1);
-				copy.set(j+1,copy.get(j));
-				copy.set(j,temp);
-				--j;
+			while (j >= 0 && copy.get(j+1).getK1energy() >= copy.get(j).getK1energy()) {
+				if (copy.get(j+1).getK1energy() == copy.get(j).getK1energy()) {
+					if (copy.get(j+1).getK2energy() < copy.get(j).getK2energy()) {
+						Person temp = copy.get(j+1);
+						copy.set(j+1,copy.get(j));
+						copy.set(j,temp);
+					}
+					--j;
+				} else {
+					Person temp = copy.get(j+1);
+					copy.set(j+1,copy.get(j));
+					copy.set(j,temp);
+					--j;
+				}
 			}
 		}
-		for (int i = 0; i < this.size/3; ++i) {
+		for (int i = 0; i < list.size()/3; ++i) {
 			this.K1_list.add(copy.get(i));
 		}
 	}
 	
 	public void arrange_K2(List<Person> list){
-		List<Person> copy = list;
-		for (int i = 1; i < this.size; ++i) {
+		List<Person> copy = new ArrayList<>(list);
+		for (int i = 1; i < list.size(); ++i) {
 			int j = i - 1;
-			while (j >= 0 && copy.get(j+1).getK1energy() < copy.get(j).getK1energy()) {
-				Person temp = copy.get(j+1);
-				copy.set(j+1,copy.get(j));
-				copy.set(j,temp);
-				--j;
+			while (j >= 0 && copy.get(j+1).getK2energy() <= copy.get(j).getK2energy()) {
+				if (copy.get(j+1).getK2energy() == copy.get(j).getK2energy()) {
+					if (copy.get(j+1).getK1energy() < copy.get(j).getK1energy()) {
+						Person temp = copy.get(j+1);
+						copy.set(j+1,copy.get(j));
+						copy.set(j,temp);
+					}
+					--j;
+				} else {
+					Person temp = copy.get(j+1);
+					copy.set(j+1,copy.get(j));
+					copy.set(j,temp);
+					--j;
+				}
 			}
 		}
-		for (int i = 0; i < this.size; ++i) {
+		for (int i = 0; i < list.size(); ++i) {
 			if (!this.K1_list.contains(copy.get(i)))
 				this.K2_list.add(copy.get(i));
-			if (this.K2_list.size() == this.size/3)
+			if (this.K2_list.size() == list.size()/3)
 				break;
 		}
 	}
 	
 	public void arrange_K3(List<Person> list){
-		for (int i = 0; i < this.size; ++i) {
-			if (!this.K1_list.contains(list.get(i)) && !this.K2_list.contains(list.get(i)))
-				this.K3_list.add(list.get(i));
+		List<Person> copy = new ArrayList<>(list);
+		for (int i = 1; i < list.size(); ++i) {
+			int j = i - 1;
+			while (j >= 0 && copy.get(j+1).getK2energy() >= copy.get(j).getK2energy()) {
+				if (copy.get(j+1).getK2energy() == copy.get(j).getK2energy()) {
+					if (copy.get(j+1).getK1energy() < copy.get(j).getK1energy()) {
+						Person temp = copy.get(j+1);
+						copy.set(j+1,copy.get(j));
+						copy.set(j,temp);
+					}
+					--j;
+				} else {
+					Person temp = copy.get(j+1);
+					copy.set(j+1,copy.get(j));
+					copy.set(j,temp);
+					--j;
+				}
+			}
+		}
+		for (int i = 0; i < list.size(); ++i) {
+			if (!this.K1_list.contains(copy.get(i)) && !this.K2_list.contains(copy.get(i)))
+				this.K3_list.add(copy.get(i));
+			if (this.K3_list.size() == list.size()/3)
+				break;
 		}
 	}
 	
 	public void form_team(){
-		//Arrange the copy in K1 decresing order
-		List <Person> copy = this.list;
-		for (int i = 1; i < this.size; ++i) {
+		//Arrange the copy in K1 decreasing order
+		List<Person> copy = new ArrayList<>(this.list);
+		for (int i = 1; i < copy.size(); ++i) {
 			int j = i - 1;
-			while (j >= 0 && copy.get(j+1).getK1energy() < copy.get(j).getK1energy()) {
-				Person temp = copy.get(j+1);
-				copy.set(j+1,copy.get(j));
-				copy.set(j,temp);
-				--j;
+			while (j >= 0 && copy.get(j+1).getK1energy() >= copy.get(j).getK1energy()) {
+				if (copy.get(j+1).getK1energy() == copy.get(j).getK1energy()) {
+					if (copy.get(j+1).getK2energy() < copy.get(j).getK2energy()) {
+						Person temp = copy.get(j+1);
+						copy.set(j+1,copy.get(j));
+						copy.set(j,temp);
+					}
+					--j;
+				} else {
+					Person temp = copy.get(j+1);
+					copy.set(j+1,copy.get(j));
+					copy.set(j,temp);
+					--j;
+				}
 			}
 		}
 		int left = 0;
@@ -112,23 +160,20 @@ public class Engine {
 		Person extra2 = null;
 		//if not divisible by 3
 		if (this.size % 3 == 1) {
-			extra = copy.get(this.size/2);
-			copy.remove(this.size/2);
+			extra = copy.remove(copy.size()/2);
 			left = 1;
 		} else if (this.size % 3 == 2){
-			extra1 = copy.get(this.size/2);
-			copy.remove(this.size/2);
-			extra2 = copy.get(this.size/2);
-			copy.remove(this.size/2);
+			extra1 = copy.remove(copy.size()/2);
+			extra2 = copy.remove(copy.size()/2);
 			left = 2;
 		}
-		//receive the original list again
-		copy = this.list;
+		//receive the original list again to maintain the order of original list
+		copy = new ArrayList<>(this.list);
 		if (this.size % 3 == 1) {
-			copy.remove(this.size/2);
+			copy.remove(extra);
 		} else if (this.size % 3 == 2){
-			copy.remove(this.size/2);
-			copy.remove(this.size/2);
+			copy.remove(extra1);
+			copy.remove(extra2);
 			left = 2;
 		}
 		//arrange K1, K2 and K3 list
@@ -137,13 +182,13 @@ public class Engine {
 		this.arrange_K3(copy);
 		int num = 3;
 		//create teams
-		for (int i = 0; i < this.size/3; ++i) {
+		for (int i = 0; i < copy.size()/num; ++i) {
 			int teamid = i + 1;
 			Person a = this.K1_list.get(i);
 			Person b = this.K2_list.get(i);
 			Person c = this.K3_list.get(i);
 			Person d = null;
-			String leader = null;
+			String leader;
 			//choose team leader
 			int a_K2 = a.getK2energy();
 			int b_K2 = b.getK2energy();
@@ -151,29 +196,30 @@ public class Engine {
 			if (a.getMypreference() == 1) {
 				if (b.getMypreference() == 1) {
 					if (c.getMypreference() == 1)
-						leader = ((a_K2>b_K2?a:b).getK2energy()>c_K2?(a_K2>b_K2?a:b):c).getStudentname();
-					else leader = (a_K2>b_K2?a:b).getStudentname();
+						leader = (((a_K2>=b_K2?a_K2:b_K2)>=c_K2)?(a_K2>=b_K2?a:b):c).getStudentname();
+					else leader = (a_K2>=b_K2?a:b).getStudentname();
 				} else {
 					if (c.getMypreference() == 1)
-						leader = (a_K2>c_K2?a:c).getStudentname();
+						leader = (a_K2>=c_K2?a:c).getStudentname();
 					else leader = a.getStudentname();
 				}
 			} else {
 				if (b.getMypreference() == 1) {
 					if (c.getMypreference() == 1)
-						leader = (b_K2>c_K2?b:c).getStudentname();
+						leader = (b_K2>=c_K2?b:c).getStudentname();
 					else leader = b.getStudentname();
 				} else {
 					if (c.getMypreference() == 1)
 						leader = c.getStudentname();
-					else leader = ((a_K2>b_K2?a:b).getK2energy()>c_K2?(a_K2>b_K2?a:b):c).getStudentname();
+					else
+						leader = (((a_K2>=b_K2?a_K2:b_K2)>=c_K2)?(a_K2>=b_K2?a:b):c).getStudentname();
 				}
 			}
 			Team temp = new Team(teamid,num,a,b,c,d,leader);
 			//add to team list
-			this.team_list[0] = temp;
-			//this.team_list.add(temp);
-		}//stopped here all the teams are made with 3 members, extra need to be added.
+			this.team_list[i] = temp;
+		}
+		//all the teams are made with 3 members, extra need to be added.
 		if (left == 1) {
 			//add extra student
 			num = 4;
@@ -184,88 +230,85 @@ public class Engine {
 			Person d = extra;
 			String leader = this.team_list[0].get_Leader();
 			Person candidate = null;
-			for (int i = 0; i < 3; ++i) {
-				if (leader == a.getStudentname())
-					candidate = a;
-				else if (leader == b.getStudentname())
-					candidate = b;
-				else candidate = c;
-			}
+			if (leader.equals(a.getStudentname()))
+				candidate = a;
+			else if (leader.equals(b.getStudentname()))
+				candidate = b;
+			else candidate = c;
+			int K2_candidate = candidate.getK2energy();
+			int K2_D = d.getK2energy();
 			if (d.getMypreference() == 1) {
 				if (candidate.getMypreference() == 1) {
-					leader = (candidate.getK2energy()>d.getK2energy()?candidate:d).getStudentname();
+					leader = (K2_candidate>K2_D?candidate:d).getStudentname();
 				}
 				else {
 					leader = d.getStudentname();
 				}
 			} else {
 				if ((candidate.getMypreference() == 0) && (d.getMypreference() == 0))
-					leader = (candidate.getK2energy()>d.getK2energy()?candidate:d).getStudentname();
+					leader = (K2_candidate>K2_D?candidate:d).getStudentname();
 			}
 			Team replace = new Team(teamid,num,a,b,c,d,leader);
 			this.team_list[0] = replace;
-			//this.team_list.set(0,replace);
 		}
 		//add 2 extra students to separate team
 		if (left == 2) {
-			//1st student
+			//add 1st student
 			num = 4;
 			int teamid = 1;
 			Person a = this.team_list[0].get_A();
 			Person b = this.team_list[0].get_B();
 			Person c = this.team_list[0].get_C();
-			Person d = extra1;
+			Person d = extra2;
 			String leader = this.team_list[0].get_Leader();
 			Person candidate = null;
-			for (int i = 0; i < 3; ++i) {
-				if (leader == a.getStudentname())
-					candidate = a;
-				else if (leader == b.getStudentname())
-					candidate = b;
-				else candidate = c;
-			}
+			if (leader.equals(a.getStudentname()))
+				candidate = a;
+			else if (leader.equals(b.getStudentname()))
+				candidate = b;
+			else candidate = c;
+			int K2_candidate = candidate.getK2energy();
+			int K2_D = d.getK2energy();
 			if (d.getMypreference() == 1) {
 				if (candidate.getMypreference() == 1) {
-					leader = (candidate.getK2energy()>candidate.getK2energy()?candidate:d).getStudentname();
+					leader = (K2_candidate>K2_D?candidate:d).getStudentname();
 				}
 				else {
 					leader = d.getStudentname();
 				}
 			} else {
 				if ((candidate.getMypreference() == 0) && (d.getMypreference() == 0))
-					leader = (candidate.getK2energy()>d.getK2energy()?candidate:d).getStudentname();
+					leader = (K2_candidate>K2_D?candidate:d).getStudentname();
 			}
 			Team replace = new Team(teamid,num,a,b,c,d,leader);
 			team_list[0] = replace;
-			//this.team_list.set(0,replace);
-			//second student
+			//add second student
 			teamid = 2;
 			a = this.team_list[1].get_A();
 			b = this.team_list[1].get_B();
 			c = this.team_list[1].get_C();
-			d = extra2;
+			d = extra1;
 			leader = this.team_list[1].get_Leader();
-			for (int i = 0; i < 3; ++i) {
-				if (leader == a.getStudentname())
-					candidate = a;
-				else if (leader == b.getStudentname())
-					candidate = b;
-				else candidate = c;
-			}
+			if (leader.equals(a.getStudentname()))
+				candidate = a;
+			else if (leader.equals(b.getStudentname()))
+				candidate = b;
+			else candidate = c;
+			K2_candidate = candidate.getK2energy();
+			K2_D = d.getK2energy();
 			if (d.getMypreference() == 1) {
 				if (candidate.getMypreference() == 1) {
-					leader = (candidate.getK2energy()>d.getK2energy()?candidate:d).getStudentname();
+					leader = (K2_candidate>K2_D?candidate:d).getStudentname();
 				}
 				else {
 					leader = d.getStudentname();
 				}
 			} else {
 				if ((candidate.getMypreference() == 0) && (d.getMypreference() == 0))
-					leader = (candidate.getK2energy()>d.getK2energy()?candidate:d).getStudentname();
+					leader = (K2_candidate>K2_D?candidate:d).getStudentname();
 			}
 			Team replace1 = new Team(teamid,num,a,b,c,d,leader);
 			team_list[1] = replace1;
-			//this.team_list.set(1,replace1);
 		}
 	}
 

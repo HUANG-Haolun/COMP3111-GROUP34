@@ -14,13 +14,18 @@ public class Team {
 	public Team(int id,int no,Person i,Person j,Person k,Person l,String boss){
 		this.teamid = id;
 		this.num = no;
-		Person A = i;
-		Person B = j;
-		Person C = k;
-		Person D = l;
-		Leader = boss;
-		K1_average = (A.getK1energy()+B.getK1energy()+C.getK1energy()+D.getK1energy())/4;
-		K2_average = (A.getK2energy()+B.getK2energy()+C.getK2energy()+D.getK2energy())/4;
+		this.A = i;
+		this.B = j;
+		this.C = k;
+		this.D = l;
+		this.Leader = boss;
+		if (this.D == null) {
+			this.K1_average = (A.getK1energy()+B.getK1energy()+C.getK1energy())/3;
+			this.K2_average = (A.getK2energy()+B.getK2energy()+C.getK2energy())/3;
+		} else {
+			this.K1_average = (A.getK1energy()+B.getK1energy()+C.getK1energy()+D.getK1energy())/4;
+			this.K2_average = (A.getK2energy()+B.getK2energy()+C.getK2energy()+D.getK2energy())/4;
+		}
 	}
 	
 	public int get_teamid() {
@@ -73,10 +78,6 @@ public class Team {
 	
 	public String get_Leader() {
 		return this.Leader;
-	}
-	
-	public void set_Leader(String lead) {
-		this.Leader = lead;
 	}
 	
 	public float get_K1_average() {
