@@ -4,7 +4,7 @@
 package ATU_Program;
 
 public class Library {
-    public boolean someLibraryMethod() {
+	public boolean someLibraryMethod() {
         return true;
     }
 }
