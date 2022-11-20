@@ -3,8 +3,14 @@
  */
 package ATU_Program;
 
+import ATU_Program.Output.*;
+
 public class Library {
 	public boolean someLibraryMethod() {
         return true;
     }
+	
+	public static void main(String args[]) {
+		Output.launch(Output.class,args);
+	}
 }
