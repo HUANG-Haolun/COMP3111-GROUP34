@@ -8,7 +8,6 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.Before;
 
-
 public class ProcessTest {
 	//for team size with 2 extra
 	List<Person> list_2 = new ArrayList<>();
@@ -604,5 +603,17 @@ public class ProcessTest {
 	public void get_id3_0() {
 		check_0.form_team();
 		assertEquals(3,check_0.get_team(3).get_teamid());
+	}
+	
+	@Test
+	public void get_K1_average_0() {
+		check_0.form_team();
+		assertEquals(5.0,check_0.get_team(3).get_K1_average(),0.001);
+	}
+	
+	@Test
+	public void get_K2_average_0() {
+		check_0.form_team();
+		assertEquals(5.6667,check_0.get_team(3).get_K2_average(),0.001);
 	}
 }
