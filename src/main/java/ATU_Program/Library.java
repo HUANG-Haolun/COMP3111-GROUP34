@@ -3,8 +3,14 @@
  */
 package ATU_Program;
 
-public class Library {
-    public boolean someLibraryMethod() {
-        return true;
-    }
+import java.io.*;
+import atu.input.*;
+public class Library extends Exception{
+	public static void main(String[] args) throws Exception {
+		String csvFile = ".\\csv\\\\Sample Student Data File.csv";
+		UIApplication.read(csvFile);
+		System.out.println("ATU Program start!");
+		UIApplication.launch(UIApplication.class, args);
+	}
 }
+
