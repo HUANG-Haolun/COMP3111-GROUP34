@@ -30,6 +30,9 @@
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
+		<accessrules>
+			<accessrule kind="accessible" pattern="javafx/**"/>
+		</accessrules>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/hp/OpenJFK/javafx-sdk-17.0.2/lib/javafx.base.jar">
 		<attributes>
@@ -67,6 +70,11 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/hp/OpenJFK/javafx-sdk-17.0.2/lib/javafx-swt.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

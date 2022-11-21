@@ -6,9 +6,27 @@ package ATU_Program;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import org.junit.Before;
+
 public class LibraryTest {
-    @Test public void testSomeLibraryMethod() {
-        Library classUnderTest = new Library();
-        assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
-    }
+//    @Test public void testSomeLibraryMethod() {
+//        Library classUnderTest = new Library();
+//        assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
+//    }
+	double[] K2, K1;
+	
+	@Before
+	public void setup() throws Exception{
+		K1 = new double[] {0.7,0.8};
+		K2 = new double[] {0.7,0.8};
+	}
+	
+	@Test
+	public void K1() {
+		assertEquals(K1, Output.getK1());
+	}
+	
+	public void K2() {
+		assertEquals(K2, Output.getK2());
+	}
 }
