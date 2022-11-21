@@ -4,6 +4,8 @@
 package ATU_Program;
 
 import java.io.*;
+import java.util.List;
+
 import atu.input.*;
 import atu.process.*;
 
@@ -19,17 +21,17 @@ public class Library extends Application{
 		Engine atuEngine = new Engine(students.size() ,students.getStudents());
 		atuEngine.form_team();
 		System.out.println(atuEngine.get_team(1).get_A().getStudentname());
-//		UIApplication.launch(UIApplication.class, args);
-
-		//output
+		
 		Team teamlist[] = atuEngine.get_teamlist();
-		Output.createList(teamlist,students.getStudents());
+		List<Person> decending = atuEngine.get_list_descending();
+		Output.createList(teamlist,students.getStudents(),decending);
 		Library.launch(args);
 	}
     @Override
     public void start(Stage stage_stat) throws Exception{
     	UIApplication.inputUI();
     	Output.outputGUI();
+    	Output.chart();
     }
 }
 

@@ -58,21 +58,15 @@ public class Output{
 //	 private static TableView table = new TableView();
 	 public static Team[] teamlist;
 	 public static List<Person> students;
+	 public static List<Person> sort;
 
-//     private final static ObservableList<Student> data =
-//             FXCollections.observableArrayList(
-//                 new Student("20761648","hbx","12","1","hhl","90","80"),
-//                 new Student("","","","2","jjh","",""),
-//                 new Student("","","","","","","")
-//             );
-	 
-	 public static void createList(Team[] teamList, List<Person> STUdents) {
+	 public static void createList(Team[] teamList, List<Person> STUdents, List<Person> decending) {
 		 teamlist = teamList;
 		 students = STUdents;
+		 sort = decending;
 	 }
      
     public static void outputGUI() throws Exception{
-//    	System.out.println("fuck youuuuuuuuuuuuuuuuu");
     	 Stage stage = new Stage();
     	FXMLLoader loader = new FXMLLoader();
      	loader.setLocation(Output.class.getResource("/output.fxml"));
@@ -221,16 +215,16 @@ public class Output{
          stage.show();  
      }
      
-    public static void chart(Team[] sort) {
+    public static void chart() {
     	 // add chart
     	 	//Defining the x axis
-    	         Stage stage_chart = new Stage();
-    	      NumberAxis xAxis = new NumberAxis(1960, 2020, 10); 
-    	      xAxis.setLabel("Energy %"); 
+    	      Stage stage_chart = new Stage();
+    	      NumberAxis xAxis = new NumberAxis(0,100,1); 
+    	      xAxis.setLabel("Number of students = 100"); 
     	        
     	      //Defining the y axis   
-    	      NumberAxis yAxis = new NumberAxis   (0, 350, 50); 
-    	      yAxis.setLabel("No.of schools"); 
+    	      NumberAxis yAxis = new NumberAxis   (0,100,1); 
+    	      yAxis.setLabel("Energy %"); 
     	        
     	      //Creating the line chart 
     	      LineChart linechart = new LineChart(xAxis, yAxis);  
@@ -238,28 +232,17 @@ public class Output{
     	      //Prepare XYChart.Series objects by setting data 
     	      XYChart.Series series = new XYChart.Series(); 
     	      series.setName("K1"); 
-    	        
-    	      series.getData().add(new XYChart.Data(1970, 15)); 
-    	      series.getData().add(new XYChart.Data(1980, 30)); 
-    	      series.getData().add(new XYChart.Data(1990, 60)); 
-    	      series.getData().add(new XYChart.Data(2000, 120)); 
-    	      series.getData().add(new XYChart.Data(2013, 240)); 
-    	      series.getData().add(new XYChart.Data(2014, 300)); 
+
     	      
     	      XYChart.Series series2 = new XYChart.Series(); 
     	      series2.setName("K2"); 
-    	        
-    	      series2.getData().add(new XYChart.Data(1970, 150)); 
-    	      series2.getData().add(new XYChart.Data(1980, 320)); 
-    	      series2.getData().add(new XYChart.Data(1990, 100)); 
-    	      series2.getData().add(new XYChart.Data(2000, 120)); 
-    	      series2.getData().add(new XYChart.Data(2013, 24)); 
-    	      series2.getData().add(new XYChart.Data(2014, 220)); 
+    	      
+//    	      System.out.printf("size = %d",sort.size());
 
-              for(int i=0 ; i < sort.length ; i++){
+              for(int i=0 ; i < sort.size() ; i++){
                 int num = i+1;
-                float k1 = sort[i].get_K1_average();
-                float k2 = sort[i].get_K2_average();
+                float k1 = sort.get(i).getK1energy();
+                float k2 = sort.get(i).getK2energy();
                 series.getData().add(new XYChart.Data(num, k1));
                 series2.getData().add(new XYChart.Data(num, k2));
               }
