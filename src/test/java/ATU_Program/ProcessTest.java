@@ -143,6 +143,24 @@ public class ProcessTest {
 	}
 
 	@Test
+	public void process_get_list_descending_2() {
+		List<Person> testing = new ArrayList<>();
+		testing.add(seven);
+		testing.add(four);
+		testing.add(eleven);
+		testing.add(six);
+		testing.add(one);
+		testing.add(eight);
+		testing.add(two);
+		testing.add(ten);
+		testing.add(three);
+		testing.add(nine);
+		testing.add(five);
+		check_2.arrange_list(list_2);
+		assertEquals(testing, check_2.get_list_descending());
+	}
+	
+	@Test
 	public void process_get_K1list_2() {
 		check_2.arrange_K1(list_2);
 		assertEquals(K1_list_2, check_2.get_K1list());
