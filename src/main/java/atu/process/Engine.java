@@ -17,7 +17,6 @@ public class Engine {
 	List<Person> K2_list;
 	List<Person> K3_list;
 	Team[] team_list;
-	//List<Team> team_list;
 	
 	/**
 	 * The constructor for Engine class. Initializes the attributes like team_list,
@@ -60,7 +59,7 @@ public class Engine {
 	/**
 	 * The method that returns the list of the students of the Engine instance.
 	 * 
-	 * @return List<Person> instance of {@link Engine#list}
+	 * @return List instance of {@link Engine#list}
 	 */
 	public List<Person> get_list() {
 		return this.list;
@@ -80,7 +79,7 @@ public class Engine {
 	 * The method that returns the list of the students of the Engine instance in 
 	 * descending order of K1_energy.
 	 * 
-	 * @return List<Person> instance of {@link Engine#list_descending}
+	 * @return List instance of {@link Engine#list_descending}
 	 */
 	public List<Person> get_list_descending() {
 		return this.list_descending;
@@ -89,7 +88,7 @@ public class Engine {
 	/**
 	 * The method that returns the K1_list of the students of the Engine instance.
 	 * 
-	 * @return List<Person> instance of {@link Engine#K1_list}
+	 * @return List instance of {@link Engine#K1_list}
 	 */
 	public List<Person> get_K1list() {
 		return this.K1_list;
@@ -98,7 +97,7 @@ public class Engine {
 	/**
 	 * The method that returns the K2_list of the students of the Engine instance.
 	 * 
-	 * @return List<Person> instance of {@link Engine#K2_list}
+	 * @return List instance of {@link Engine#K2_list}
 	 */
 	public List<Person> get_K2list() {
 		return this.K2_list;
@@ -107,7 +106,7 @@ public class Engine {
 	/**
 	 * The method that returns the K3_list of the students of the Engine instance.
 	 * 
-	 * @return List<Person> instance of {@link Engine#K3_list}
+	 * @return List instance of {@link Engine#K3_list}
 	 */
 	public List<Person> get_K3list() {
 		return this.K3_list;
