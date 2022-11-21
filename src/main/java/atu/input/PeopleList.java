@@ -71,4 +71,8 @@ public class PeopleList {
 	public int size(){
 		return size;
 	}
+	
+	public List<Person> getStudents(){
+		return students;
+	}
 }

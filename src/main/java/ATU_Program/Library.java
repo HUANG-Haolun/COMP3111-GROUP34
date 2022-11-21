@@ -5,11 +5,16 @@ package ATU_Program;
 
 import java.io.*;
 import atu.input.*;
+import atu.process.*;
 public class Library extends Exception{
 	public static void main(String[] args) throws Exception {
-		String csvFile = ".\\csv\\\\Sample Student Data File.csv";
-		UIApplication.read(csvFile);
 		System.out.println("ATU Program start!");
+		String csvFile = ".\\csv\\\\Sample Student Data File.csv";
+		PeopleList students = new PeopleList();
+		students =	UIApplication.read(csvFile);
+		Engine atuEngine = new Engine(students.size() ,students.getStudents());
+		atuEngine.form_team();
+		System.out.println(atuEngine.get_team(1).get_A().getStudentname());
 		UIApplication.launch(UIApplication.class, args);
 	}
 }
