@@ -26,6 +26,7 @@ public class Person {
     private final SimpleStringProperty mypreference;
     private final SimpleStringProperty concerns;
     private final SimpleStringProperty index;
+    private int team_id;
 
     /**
      * This method is the constructor of the class Person.
@@ -50,6 +51,7 @@ public class Person {
         this.mypreference = new SimpleStringProperty(my_preference);
         this.concerns = new SimpleStringProperty(concerns);
         this.index = new SimpleStringProperty(index);
+        this.team_id = 0;
     }
 
     
@@ -216,5 +218,13 @@ public class Person {
     */
     public void setIndex(String val) {
         index.set(val);
+    }
+    
+    public int get_team_id() {
+    	return this.team_id;
+    }
+    
+    public void set_team_id(int num) {
+    	this.team_id = num;
     }
 }

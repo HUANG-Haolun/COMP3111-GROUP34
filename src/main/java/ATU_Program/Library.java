@@ -4,11 +4,15 @@
 package ATU_Program;
 
 import java.io.*;
+import java.util.List;
+
 import atu.input.*;
 import atu.process.*;
-import javafx.stage.Stage;
+
 import javafx.application.Application;
-public class Library extends Application {
+import javafx.stage.Stage;
+
+public class Library extends Application{
 	public static void main(String[] args) throws Exception {
 		System.out.println("ATU Program start!");
 		String csvFile = ".\\csv\\\\Sample Student Data File.csv";
@@ -17,12 +21,17 @@ public class Library extends Application {
 		Engine atuEngine = new Engine(students.size() ,students.getStudents());
 		atuEngine.form_team();
 		System.out.println(atuEngine.get_team(1).get_A().getStudentname());
-//		UIApplication.launch(UIApplication.class, args);
+		
+		Team teamlist[] = atuEngine.get_teamlist();
+		List<Person> decending = atuEngine.get_list_descending();
+		Output.createList(teamlist,students.getStudents(),decending);
 		Library.launch(args);
 	}
-	@Override
-	public void start(Stage stage) {
-		UIApplication.fuckyou();
-	}
+    @Override
+    public void start(Stage stage_stat) throws Exception{
+    	UIApplication.inputUI();
+    	Output.outputGUI();
+    	Output.chart();
+    }
 }
 

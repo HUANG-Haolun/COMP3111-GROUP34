@@ -25,9 +25,6 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import atu.input.*;
 
-/**
- * this is the class for showing the input data in the GUI
- */
 public class UIApplication{
     private static TableView<Statistics> stat_table = new TableView<Statistics>();
     private static TableView<Person> person_table = new TableView<Person>();
@@ -115,12 +112,8 @@ public class UIApplication{
         }
         return students;
     }
-
-    /**
-     * This method is used to start the application.
-     * @param stage_stat stage_stat The stage of the statistics table.
-     */
-    public static void fuckyou() {
+    
+    public static void inputUI(){
     	Stage stage_stat = new Stage();
         Scene scene_stat = new Scene(new Group());
         stage_stat.setTitle("Table of students' personal data");
