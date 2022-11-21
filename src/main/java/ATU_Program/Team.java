@@ -1,5 +1,5 @@
 package ATU_Program;
-
+import atu.input.*;
 public class Team {
 	private int teamid = 0;
 	private int num = 3;

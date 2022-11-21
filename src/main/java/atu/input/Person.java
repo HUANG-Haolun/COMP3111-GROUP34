@@ -1,4 +1,4 @@
-package ATU_Program;
+package atu.input;
 
 import javafx.beans.property.SimpleStringProperty;
 

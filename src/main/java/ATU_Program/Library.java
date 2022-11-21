@@ -3,11 +3,21 @@
  */
 package ATU_Program;
 
-public class Library {
-	public static void main(String[] arg) {
-		
+import java.io.*;
+import atu.input.*;
+public class Library extends Exception{
+	public static void main(String[] args) throws Exception {
+		System.out.println("ATU Program start!");
+		String csvFile = ".\\csv\\\\Sample Student Data File.csv";
+		PeopleList students = new PeopleList();
+		students =	UIApplication.read(csvFile);
+		System.out.printf("size %d \n",students.size() );
+		Engine atuEngine = new Engine(students.size() ,students.getStudents());
+		System.out.printf("size %d \n",students.size() );
+		atuEngine.form_team();
+		System.out.printf("size %d \n",students.size() );
+		System.out.println(atuEngine.get_team(1).get_A().getStudentname());
+		UIApplication.launch(UIApplication.class, args);
 	}
-    public boolean someLibraryMethod() {
-        return true;
-    }
 }
+
