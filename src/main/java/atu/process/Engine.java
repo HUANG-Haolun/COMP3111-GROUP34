@@ -36,6 +36,7 @@ public class Engine {
 		this.team_list = new Team[size/3];
 		for (int i = 0; i < size; ++i)
 			this.list.add(input.get(i));
+		arrange_list(input);
 	}
 
 	/**

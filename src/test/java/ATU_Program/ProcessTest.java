@@ -156,7 +156,6 @@ public class ProcessTest {
 		testing.add(three);
 		testing.add(nine);
 		testing.add(five);
-		check_2.arrange_list(list_2);
 		assertEquals(testing, check_2.get_list_descending());
 	}
 	
