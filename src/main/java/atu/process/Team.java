@@ -1,4 +1,5 @@
-package ATU_Program;
+package atu.process;
+import atu.input.*;
 
 /**
  * The class that represents the team. It has attributes of 3-4 students, team id, 

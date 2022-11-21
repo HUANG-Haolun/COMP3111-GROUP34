@@ -1,8 +1,8 @@
-package ATU_Program;
+package atu.process;
 import java.util.ArrayList;
 import java.util.List;
 import atu.input.*;
-
+import atu.input.*;
 /**
  * The class for arranging and forming the team and its list.
  * 

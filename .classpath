@@ -14,31 +14,19 @@
 	</classpathentry>
 	<classpathentry kind="src" output="bin/test" path="src/test/java">
 		<attributes>
-			<attribute name="test" value="true"/>
 			<attribute name="gradle_scope" value="test"/>
 			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" output="bin/test" path="src/test/resources">
 		<attributes>
-			<attribute name="test" value="true"/>
 			<attribute name="gradle_scope" value="test"/>
 			<attribute name="gradle_used_by_scope" value="test"/>
+			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="D:/class/2022fall/comp3111/lab33/openjfx-19_windows-x64_bin-sdk/javafx-sdk-19/lib/javafx.base.jar"/>
-	<classpathentry kind="lib" path="D:/class/2022fall/comp3111/lab33/openjfx-19_windows-x64_bin-sdk/javafx-sdk-19/lib/javafx.controls.jar"/>
-	<classpathentry kind="lib" path="D:/class/2022fall/comp3111/lab33/openjfx-19_windows-x64_bin-sdk/javafx-sdk-19/lib/javafx.fxml.jar"/>
-	<classpathentry kind="lib" path="D:/class/2022fall/comp3111/lab33/openjfx-19_windows-x64_bin-sdk/javafx-sdk-19/lib/javafx.graphics.jar"/>
-	<classpathentry kind="lib" path="D:/class/2022fall/comp3111/lab33/openjfx-19_windows-x64_bin-sdk/javafx-sdk-19/lib/javafx.media.jar"/>
-	<classpathentry kind="lib" path="D:/class/2022fall/comp3111/lab33/openjfx-19_windows-x64_bin-sdk/javafx-sdk-19/lib/javafx.swing.jar"/>
-	<classpathentry kind="lib" path="D:/class/2022fall/comp3111/lab33/openjfx-19_windows-x64_bin-sdk/javafx-sdk-19/lib/javafx.web.jar"/>
-	<classpathentry kind="lib" path="D:/class/2022fall/comp3111/lab33/openjfx-19_windows-x64_bin-sdk/javafx-sdk-19/lib/javafx-swt.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-15/"/>
+	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
 	<classpathentry kind="output" path="bin/default"/>
 </classpath>

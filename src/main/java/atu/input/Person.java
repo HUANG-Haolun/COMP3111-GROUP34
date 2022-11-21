@@ -77,7 +77,11 @@ public class Person {
     }
 
     public int getMypreference() {
-        return Integer.valueOf(mypreference.get());
+        if(!mypreference.get().equals("")){
+            return Integer.valueOf(mypreference.get());}
+        else{
+            return 0;
+        }
     }
 
     public void setMypreference(String val) {
