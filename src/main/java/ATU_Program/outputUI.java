@@ -20,7 +20,7 @@ public class outputUI {
     @FXML
     void pressButton(ActionEvent event) {
     	String input = textbox.getText();
-    	Output.chart();
+    	// Output.chart();
     	Output.table(input);
     }
 }

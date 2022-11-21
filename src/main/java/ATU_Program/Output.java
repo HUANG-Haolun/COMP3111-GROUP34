@@ -53,11 +53,11 @@ import atu.input.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Output extends Application{
+public class Output{
 	
 //	 private static TableView table = new TableView();
-	 private static double K1[];
-	 private static double K2[];
+	 public static Team[] teamlist;
+	 public static List<Person> students;
 
 //     private final static ObservableList<Student> data =
 //             FXCollections.observableArrayList(
@@ -65,11 +65,17 @@ public class Output extends Application{
 //                 new Student("","","","2","jjh","",""),
 //                 new Student("","","","","","","")
 //             );
+	 
+	 public static void createList(Team[] teamList, List<Person> STUdents) {
+		 teamlist = teamList;
+		 students = STUdents;
+	 }
      
-    @Override
-    public void start(Stage stage) throws Exception{
+    public static void outputGUI() throws Exception{
+//    	System.out.println("fuck youuuuuuuuuuuuuuuuu");
+    	 Stage stage = new Stage();
     	FXMLLoader loader = new FXMLLoader();
-     	loader.setLocation(getClass().getResource("/output.fxml"));
+     	loader.setLocation(Output.class.getResource("/output.fxml"));
      	VBox root = (VBox) loader.load();
      	Scene scene = new Scene(root);
      	stage.setScene(scene);
@@ -77,8 +83,25 @@ public class Output extends Application{
      	stage.show();
      }
      
-    public static void table(Team team, Person Person_in) {
+    public static void table(String input_name) {
+    	Person Person_in = null;
+    	
+    	for(int i=0 ; i < students.size() ; i++) {
+    		String iter_name = students.get(i).getStudentname();
+    		if(iter_name.equals(input_name) ) {
+    			Person_in = students.get(i);
+    			break;
+    		}
+    		System.out.println(students.get(i).getStudentname());
+    	}
+    	
+    	if(Person_in == null) {
+    		return;
+    	}
+    	
     	 TableView table = new TableView();
+        int teamID = Person_in.get_team_id();
+        Team team = teamlist[teamID];
         
         //  team overall info
          String teamid = String.valueOf(team.get_teamid());
@@ -123,7 +146,7 @@ public class Output extends Application{
          String ex_k2 = "";
          if(member_num == 4){
             ex_num = "3";
-            Person C1 = personList.get(2)
+            Person C1 = personList.get(2);
             ex_name = C1.getStudentname();
             ex_k1 = String.valueOf(C1.getK1energy());
             ex_k2 = String.valueOf(C1.getK2energy());
@@ -235,8 +258,8 @@ public class Output extends Application{
 
               for(int i=0 ; i < sort.length ; i++){
                 int num = i+1;
-                int k1 = sort[i].get_K1_average();
-                int k2 = sort[i].get_K2_average();
+                float k1 = sort[i].get_K1_average();
+                float k2 = sort[i].get_K2_average();
                 series.getData().add(new XYChart.Data(num, k1));
                 series2.getData().add(new XYChart.Data(num, k2));
               }
@@ -260,19 +283,7 @@ public class Output extends Application{
     	      //Displaying the contents of the stage 
     	      stage_chart.show();
      }
-     
-    public static double[] getK1() {
-    	 K1[0] = 0.7;
-    	 K1[1] = 0.8;
-    	 return K1;
-     }
-     
-    public static double[] getK2() {
-    	 K2[0] = 0.7;
-    	 K2[1] = 0.8;
-    	 return K2;
-     }
-     
+    
     public static class Student{
             private final String mid;
             private final String mname;

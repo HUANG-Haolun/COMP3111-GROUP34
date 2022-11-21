@@ -1,4 +1,6 @@
 package ATU_Program;
+import atu.input.*;
+import atu.process.*;
 
 import static org.junit.Assert.*;
 
