@@ -1,4 +1,6 @@
 package ATU_Program;
+import atu.input.*;
+import atu.process.*;
 
 import static org.junit.Assert.*;
 
@@ -140,6 +142,23 @@ public class ProcessTest {
 		assertEquals(list_2, check_2.get_list());
 	}
 
+	@Test
+	public void process_get_list_descending_2() {
+		List<Person> testing = new ArrayList<>();
+		testing.add(seven);
+		testing.add(four);
+		testing.add(eleven);
+		testing.add(six);
+		testing.add(one);
+		testing.add(eight);
+		testing.add(two);
+		testing.add(ten);
+		testing.add(three);
+		testing.add(nine);
+		testing.add(five);
+		assertEquals(testing, check_2.get_list_descending());
+	}
+	
 	@Test
 	public void process_get_K1list_2() {
 		check_2.arrange_K1(list_2);

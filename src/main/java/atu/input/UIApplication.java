@@ -17,9 +17,9 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import atu.input.*;
 
-public class UIApplication extends Application {
-    private TableView<Statistics> stat_table = new TableView<Statistics>();
-    private TableView<Person> person_table = new TableView<Person>();
+public class UIApplication{
+    private static TableView<Statistics> stat_table = new TableView<Statistics>();
+    private static TableView<Person> person_table = new TableView<Person>();
 
     private final static ObservableList<Statistics> stat_data = FXCollections.observableArrayList();
     private final static ObservableList<Person> person_data = FXCollections.observableArrayList();
@@ -95,8 +95,9 @@ public class UIApplication extends Application {
         }
         return students;
     }
-    @Override
-    public void start(Stage stage_stat) {
+    
+    public static void inputUI(){
+    	Stage stage_stat = new Stage();
         Scene scene_stat = new Scene(new Group());
         stage_stat.setTitle("Table of students' personal data");
         stage_stat.setWidth(350);
