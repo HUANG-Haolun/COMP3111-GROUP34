@@ -12,11 +12,11 @@ import atu.input.*;
 public class Engine {
 	int size;
 	List<Person> list;
+	List<Person> list_descending;
 	List<Person> K1_list;
 	List<Person> K2_list;
 	List<Person> K3_list;
 	Team[] team_list;
-	//List<Team> team_list;
 	
 	/**
 	 * The constructor for Engine class. Initializes the attributes like team_list,
@@ -29,12 +29,14 @@ public class Engine {
 	public Engine(int size, List<Person> input) {
 		this.size = size;
 		this.list = new ArrayList<>();
+		this.list_descending = new ArrayList<>();
 		this.K1_list = new ArrayList<>();
 		this.K2_list = new ArrayList<>();
 		this.K3_list = new ArrayList<>();
 		this.team_list = new Team[size/3];
 		for (int i = 0; i < size; ++i)
 			this.list.add(input.get(i));
+		arrange_list(input);
 	}
 
 	/**
@@ -58,7 +60,7 @@ public class Engine {
 	/**
 	 * The method that returns the list of the students of the Engine instance.
 	 * 
-	 * @return List<Person> instance of {@link Engine#list}
+	 * @return List instance of {@link Engine#list}
 	 */
 	public List<Person> get_list() {
 		return this.list;
@@ -75,9 +77,19 @@ public class Engine {
 	}
 	
 	/**
+	 * The method that returns the list of the students of the Engine instance in 
+	 * descending order of K1_energy.
+	 * 
+	 * @return List instance of {@link Engine#list_descending}
+	 */
+	public List<Person> get_list_descending() {
+		return this.list_descending;
+	}
+	
+	/**
 	 * The method that returns the K1_list of the students of the Engine instance.
 	 * 
-	 * @return List<Person> instance of {@link Engine#K1_list}
+	 * @return List instance of {@link Engine#K1_list}
 	 */
 	public List<Person> get_K1list() {
 		return this.K1_list;
@@ -86,7 +98,7 @@ public class Engine {
 	/**
 	 * The method that returns the K2_list of the students of the Engine instance.
 	 * 
-	 * @return List<Person> instance of {@link Engine#K2_list}
+	 * @return List instance of {@link Engine#K2_list}
 	 */
 	public List<Person> get_K2list() {
 		return this.K2_list;
@@ -95,10 +107,42 @@ public class Engine {
 	/**
 	 * The method that returns the K3_list of the students of the Engine instance.
 	 * 
-	 * @return List<Person> instance of {@link Engine#K3_list}
+	 * @return List instance of {@link Engine#K3_list}
 	 */
 	public List<Person> get_K3list() {
 		return this.K3_list;
+	}
+	
+	/**
+	 * The method that copies value of the parameter and uses it to sort a list into
+	 * the Person instances with descending order of K1_energy and if they have same
+	 * K1_energy, then Person instance with lower K2_energy will be in previous order. 
+	 *
+	 * @param list the list of the students
+	 */
+	public void arrange_list(List<Person> list){
+		List<Person> copy = new ArrayList<>(list);
+		for (int i = 1; i < list.size(); ++i) {
+			int j = i - 1;
+			while (j >= 0 && copy.get(j+1).getK1energy() >= copy.get(j).getK1energy()) {
+				if (copy.get(j+1).getK1energy() == copy.get(j).getK1energy()) {
+					if (copy.get(j+1).getK2energy() < copy.get(j).getK2energy()) {
+						Person temp = copy.get(j+1);
+						copy.set(j+1,copy.get(j));
+						copy.set(j,temp);
+					}
+					--j;
+				} else {
+					Person temp = copy.get(j+1);
+					copy.set(j+1,copy.get(j));
+					copy.set(j,temp);
+					--j;
+				}
+			}
+		}
+		for (int i = 0; i < list.size(); ++i) {
+			this.list_descending.add(copy.get(i));
+		}
 	}
 
 	/**
