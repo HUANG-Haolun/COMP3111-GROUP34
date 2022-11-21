@@ -6,7 +6,9 @@ package ATU_Program;
 import java.io.*;
 import atu.input.*;
 import atu.process.*;
-public class Library extends Exception{
+import javafx.stage.Stage;
+import javafx.application.Application;
+public class Library extends Application {
 	public static void main(String[] args) throws Exception {
 		System.out.println("ATU Program start!");
 		String csvFile = ".\\csv\\\\Sample Student Data File.csv";
@@ -15,7 +17,12 @@ public class Library extends Exception{
 		Engine atuEngine = new Engine(students.size() ,students.getStudents());
 		atuEngine.form_team();
 		System.out.println(atuEngine.get_team(1).get_A().getStudentname());
-		UIApplication.launch(UIApplication.class, args);
+//		UIApplication.launch(UIApplication.class, args);
+		Library.launch(args);
+	}
+	@Override
+	public void start(Stage stage) {
+		UIApplication.fuckyou();
 	}
 }
 

@@ -1,5 +1,13 @@
 package atu.input;
-
+/**
+ * Created by HUANG Haolun on 2022/10/20.
+ * this is for showing the input data in the GUI
+ * @author HUANG Haolun(hhuangbl@connect.ust.hk)
+ * @version 1.0
+ * @since 1.0
+ * @see atu.input.Person
+ * @see atu.input.Statistics
+ */
 import java.io.*;
 import javafx.application.Application;
 import javafx.beans.property.SimpleStringProperty;
@@ -17,14 +25,26 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import atu.input.*;
 
-public class UIApplication extends Application {
-    private TableView<Statistics> stat_table = new TableView<Statistics>();
-    private TableView<Person> person_table = new TableView<Person>();
+/**
+ * this is the class for showing the input data in the GUI
+ */
+public class UIApplication{
+    private static TableView<Statistics> stat_table = new TableView<Statistics>();
+    private static TableView<Person> person_table = new TableView<Person>();
 
     private final static ObservableList<Statistics> stat_data = FXCollections.observableArrayList();
+    
     private final static ObservableList<Person> person_data = FXCollections.observableArrayList();
+    
     public static final String delimiter = ",";
+
     public static final String quotation = "\"";
+
+    /**
+     * This method is used to read the csv file and store the data in the table.
+     * @param csvFile The name of the csv file.
+     * @return PeopleList The data of the csv file.
+     */
     public static PeopleList read(String csvFile) {
         System.out.print("\n");
         PeopleList students = new PeopleList();
@@ -95,8 +115,13 @@ public class UIApplication extends Application {
         }
         return students;
     }
-    @Override
-    public void start(Stage stage_stat) {
+
+    /**
+     * This method is used to start the application.
+     * @param stage_stat stage_stat The stage of the statistics table.
+     */
+    public static void fuckyou() {
+    	Stage stage_stat = new Stage();
         Scene scene_stat = new Scene(new Group());
         stage_stat.setTitle("Table of students' personal data");
         stage_stat.setWidth(350);
