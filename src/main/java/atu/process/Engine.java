@@ -314,6 +314,9 @@ public class Engine {
 						leader = (((a_K2>=b_K2?a_K2:b_K2)>=c_K2)?(a_K2>=b_K2?a:b):c).getStudentname();
 				}
 			}
+			a.set_team_id(i+1);
+			b.set_team_id(i+1);
+			c.set_team_id(i+1);
 			Team temp = new Team(teamid,num,a,b,c,d,leader);
 			//add to team list
 			this.team_list[i] = temp;
@@ -347,6 +350,7 @@ public class Engine {
 				if ((candidate.getMypreference() == 0) && (d.getMypreference() == 0))
 					leader = (K2_candidate>K2_D?candidate:d).getStudentname();
 			}
+			d.set_team_id(1);
 			Team replace = new Team(teamid,num,a,b,c,d,leader);
 			this.team_list[0] = replace;
 		}
@@ -379,6 +383,7 @@ public class Engine {
 				if ((candidate.getMypreference() == 0) && (d.getMypreference() == 0))
 					leader = (K2_candidate>K2_D?candidate:d).getStudentname();
 			}
+			d.set_team_id(1);
 			Team replace = new Team(teamid,num,a,b,c,d,leader);
 			team_list[0] = replace;
 			//add second student
@@ -406,6 +411,7 @@ public class Engine {
 				if ((candidate.getMypreference() == 0) && (d.getMypreference() == 0))
 					leader = (K2_candidate>K2_D?candidate:d).getStudentname();
 			}
+			d.set_team_id(2);
 			Team replace1 = new Team(teamid,num,a,b,c,d,leader);
 			team_list[1] = replace1;
 		}

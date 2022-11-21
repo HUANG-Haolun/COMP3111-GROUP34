@@ -13,6 +13,7 @@ public class Person {
     private final SimpleStringProperty mypreference;
     private final SimpleStringProperty concerns;
     private final SimpleStringProperty index;
+    private int team_id;
 
 
     public Person(String student_id, String student_name, String k1_energy, String k2_energy, String k3_trick1,
@@ -26,6 +27,7 @@ public class Person {
         this.mypreference = new SimpleStringProperty(my_preference);
         this.concerns = new SimpleStringProperty(concerns);
         this.index = new SimpleStringProperty(index);
+        this.team_id = 0;
     }
 
     public String getStudentid() {
@@ -102,5 +104,13 @@ public class Person {
 
     public void setIndex(String val) {
         index.set(val);
+    }
+    
+    public int get_team_id() {
+    	return this.team_id;
+    }
+    
+    public void set_team_id(int num) {
+    	this.team_id = num;
     }
 }
