@@ -47,7 +47,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import atu.process.*;
+import atu.input.*;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class Output extends Application{
 	
@@ -62,26 +66,76 @@ public class Output extends Application{
 //                 new Student("","","","","","","")
 //             );
      
-     @Override
-     public void start(Stage stage) throws Exception{
+    @Override
+    public void start(Stage stage) throws Exception{
     	FXMLLoader loader = new FXMLLoader();
      	loader.setLocation(getClass().getResource("/output.fxml"));
      	VBox root = (VBox) loader.load();
      	Scene scene = new Scene(root);
      	stage.setScene(scene);
      	stage.setTitle("Output");
-     	stage.show();	
+     	stage.show();
      }
      
-     
-     public static void table(String jkl) {
+    public static void table(Team team, Person Person_in) {
     	 TableView table = new TableView();
+        
+        //  team overall info
+         String teamid = String.valueOf(team.get_teamid());
+         String leader_name = Person_in.getStudentname();
+         String leader_id = String.valueOf(Person_in.getStudentid());
+         int member_num = team.get_num();
+
+         // teammates array
+         Person A = team.get_A();
+         Person B = team.get_B();
+         Person C = team.get_C();
+         Person D = team.get_D();
+         List<Person> personList = new ArrayList<>();
+         personList.add(A);
+         personList.add(B);
+         personList.add(C);
+         personList.add(D);
+
+         for(int i=0; i < member_num; i++){
+            Person itr = personList.get(i);
+            if(itr.getStudentname() == Person_in.getStudentname()){
+                personList.remove(i);
+            }
+         }
+
+         // Person A
+         Person A1 = personList.get(0);
+         String A_name = A1.getStudentname();
+         String A_K1 = String.valueOf(A1.getK1energy());
+         String A_K2 = String.valueOf(A1.getK2energy());
+
+         // Person B
+         Person B1 = personList.get(1);
+         String B_name = B1.getStudentname();
+         String B_K1 = String.valueOf(B1.getK1energy());
+         String B_K2 = String.valueOf(B1.getK2energy());       
+
+         // extra_person info
+         String ex_num = "";
+         String ex_name = "";
+         String ex_k1 = "";
+         String ex_k2 = "";
+         if(member_num == 4){
+            ex_num = "3";
+            Person C1 = personList.get(2)
+            ex_name = C1.getStudentname();
+            ex_k1 = String.valueOf(C1.getK1energy());
+            ex_k2 = String.valueOf(C1.getK2energy());
+         }
     	 
+
+
     	 ObservableList<Student> data =
                  FXCollections.observableArrayList(
-                     new Student("20761648",jkl,"12","1","hhl","90","80"),
-                     new Student("","","","2","jjh","",""),
-                     new Student("","","","","","","")
+                     new Student(leader_id,leader_name,teamid,"1",A_name,A_K1,A_K2),
+                     new Student("","","","2",B_name,B_K1,B_K2),
+                     new Student("","","",ex_num,ex_name,ex_k1,ex_k2)
                  );
 
     	 
@@ -144,12 +198,12 @@ public class Output extends Application{
          stage.show();  
      }
      
-     public static void chart() {
+    public static void chart(Team[] sort) {
     	 // add chart
     	 	//Defining the x axis
     	         Stage stage_chart = new Stage();
     	      NumberAxis xAxis = new NumberAxis(1960, 2020, 10); 
-    	      xAxis.setLabel("Years"); 
+    	      xAxis.setLabel("Energy %"); 
     	        
     	      //Defining the y axis   
     	      NumberAxis yAxis = new NumberAxis   (0, 350, 50); 
@@ -179,6 +233,14 @@ public class Output extends Application{
     	      series2.getData().add(new XYChart.Data(2013, 24)); 
     	      series2.getData().add(new XYChart.Data(2014, 220)); 
 
+              for(int i=0 ; i < sort.length ; i++){
+                int num = i+1;
+                int k1 = sort[i].get_K1_average();
+                int k2 = sort[i].get_K2_average();
+                series.getData().add(new XYChart.Data(num, k1));
+                series2.getData().add(new XYChart.Data(num, k2));
+              }
+
     	      //Setting the data to Line chart    
     	      linechart.getData().add(series);    
     	      linechart.getData().add(series2);   
@@ -199,19 +261,19 @@ public class Output extends Application{
     	      stage_chart.show();
      }
      
-     public static double[] getK1() {
+    public static double[] getK1() {
     	 K1[0] = 0.7;
     	 K1[1] = 0.8;
     	 return K1;
      }
      
-     public static double[] getK2() {
+    public static double[] getK2() {
     	 K2[0] = 0.7;
     	 K2[1] = 0.8;
     	 return K2;
      }
      
-        public static class Student{
+    public static class Student{
             private final String mid;
             private final String mname;
             private final String team_num;
@@ -261,43 +323,5 @@ public class Output extends Application{
                 return k2;
             }
         }
-
-        
-        public static class Person {
-             
-            private String firstName;
-            private final SimpleStringProperty lastName;
-            private final SimpleStringProperty email;
-     
-            private Person(String fName, String lName, String email) {
-                this.firstName = fName;
-                this.lastName = new SimpleStringProperty(lName);
-                this.email = new SimpleStringProperty(email);
-            }
-     
-            public String getFirstName() {
-                return firstName;
-            }
-     
-            public void setFirstName(String fName) {
-                firstName = fName;
-            }
-     
-            public String getLastName() {
-                return lastName.get();
-            }
-     
-            public void setLastName(String fName) {
-                lastName.set(fName);
-            }
-     
-            public String getEmail() {
-                return email.get();
-            }
-     
-            public void setEmail(String fName) {
-                email.set(fName);
-            }
-}
 	
 }
