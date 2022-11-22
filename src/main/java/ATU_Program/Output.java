@@ -77,7 +77,7 @@ public class Output{
      	stage.show();
      }
      
-    public static void table(String input_name) {
+    public static int table(String input_name) {
     	Person Person_in = null;
         System.out.println(input_name);
     	
@@ -120,12 +120,14 @@ public class Output{
          personList.add(A);
          personList.add(B);
          personList.add(C);
-//         personList.add(D);
+         personList.add(D);
+         
 
          for(int i=0; i < member_num; i++){
             Person itr = personList.get(i);
-            if(itr.getStudentname() == Person_in.getStudentname()){
+            if(itr.getStudentname().equals(input_name)){
                 personList.remove(i);
+                break;
             }
          }
 
@@ -220,9 +222,11 @@ public class Output{
   
          stage.setScene(scene);
          stage.show();  
+         
+         return 0;
      }
      
-    public static void chart() {
+    public static int chart() {
     	 // add chart
     	 	//Defining the x axis
     	      Stage stage_chart = new Stage();
@@ -272,6 +276,8 @@ public class Output{
     		   
     	      //Displaying the contents of the stage 
     	      stage_chart.show();
+    	      
+    	      return 0;
      }
     
     public static class Student{
