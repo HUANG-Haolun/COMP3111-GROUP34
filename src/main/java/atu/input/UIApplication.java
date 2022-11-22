@@ -1,5 +1,13 @@
 package atu.input;
-
+/**
+ * Created by HUANG Haolun on 2022/10/20.
+ * this is for showing the input data in the GUI
+ * @author HUANG Haolun(hhuangbl@connect.ust.hk)
+ * @version 1.0
+ * @since 1.0
+ * @see atu.input.Person
+ * @see atu.input.Statistics
+ */
 import java.io.*;
 import javafx.application.Application;
 import javafx.beans.property.SimpleStringProperty;
@@ -22,9 +30,18 @@ public class UIApplication{
     private static TableView<Person> person_table = new TableView<Person>();
 
     private final static ObservableList<Statistics> stat_data = FXCollections.observableArrayList();
+    
     private final static ObservableList<Person> person_data = FXCollections.observableArrayList();
+    
     public static final String delimiter = ",";
+
     public static final String quotation = "\"";
+
+    /**
+     * This method is used to read the csv file and store the data in the table.
+     * @param csvFile The name of the csv file.
+     * @return PeopleList The data of the csv file.
+     */
     public static PeopleList read(String csvFile) {
         System.out.print("\n");
         PeopleList students = new PeopleList();

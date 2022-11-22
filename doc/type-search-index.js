@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"atu.output","l":"Output"},{"p":"atu.output","l":"Output.Student"},{"l":"所有类","u":"allclasses-index.html"}];updateSearchResults();

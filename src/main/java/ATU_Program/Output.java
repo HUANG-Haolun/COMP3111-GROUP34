@@ -56,9 +56,9 @@ import java.util.List;
 public class Output{
 	
 //	 private static TableView table = new TableView();
-	 public static Team[] teamlist;
-	 public static List<Person> students;
-	 public static List<Person> sort;
+	 private static Team[] teamlist;
+	 private static List<Person> students;
+	 private static List<Person> sort;
 
 	 public static void createList(Team[] teamList, List<Person> STUdents, List<Person> decending) {
 		 teamlist = teamList;
@@ -77,8 +77,9 @@ public class Output{
      	stage.show();
      }
      
-    public static void table(String input_name) {
+    public static int table(String input_name) {
     	Person Person_in = null;
+        System.out.println(input_name);
     	
     	for(int i=0 ; i < students.size() ; i++) {
     		String iter_name = students.get(i).getStudentname();
@@ -86,38 +87,47 @@ public class Output{
     			Person_in = students.get(i);
     			break;
     		}
-    		System.out.println(students.get(i).getStudentname());
     	}
     	
     	if(Person_in == null) {
-    		return;
+    		return 1;
     	}
     	
-    	 TableView table = new TableView();
+    	TableView table = new TableView();
         int teamID = Person_in.get_team_id();
-        Team team = teamlist[teamID];
+        Team team = teamlist[teamID-1];
         
         //  team overall info
          String teamid = String.valueOf(team.get_teamid());
          String leader_name = Person_in.getStudentname();
          String leader_id = String.valueOf(Person_in.getStudentid());
          int member_num = team.get_num();
+         String k1_average = String.valueOf(team.get_K1_average());
+         String k2_average = String.valueOf(team.get_K2_average());
+         
+         System.out.println(String.valueOf(teamID));
 
          // teammates array
-         Person A = team.get_A();
-         Person B = team.get_B();
-         Person C = team.get_C();
-         Person D = team.get_D();
+         Person A = team.get_A(); 
+         System.out.println(A.getStudentname());
+         Person B = team.get_B(); 
+         System.out.println(B.getStudentname());
+         Person C = team.get_C(); 
+         System.out.println(C.getStudentname());
+         Person D = team.get_D(); 
+//         System.out.println(D.getStudentname());
          List<Person> personList = new ArrayList<>();
          personList.add(A);
          personList.add(B);
          personList.add(C);
          personList.add(D);
+         
 
          for(int i=0; i < member_num; i++){
             Person itr = personList.get(i);
-            if(itr.getStudentname() == Person_in.getStudentname()){
+            if(itr.getStudentname().equals(input_name)){
                 personList.remove(i);
+                break;
             }
          }
 
@@ -148,13 +158,12 @@ public class Output{
     	 
 
 
-    	 ObservableList<Student> data =
+         ObservableList<Student> data =
                  FXCollections.observableArrayList(
-                     new Student(leader_id,leader_name,teamid,"1",A_name,A_K1,A_K2),
-                     new Student("","","","2",B_name,B_K1,B_K2),
-                     new Student("","","",ex_num,ex_name,ex_k1,ex_k2)
+                     new Student(leader_id,leader_name,teamid,"1",A_name,k1_average,k2_average),
+                     new Student("","","","2",B_name,"",""),
+                     new Student("","","",ex_num,ex_name,"","")
                  );
-
     	 
     	 Stage stage = new Stage();
     	 Scene scene = new Scene(new Group());
@@ -213,9 +222,11 @@ public class Output{
   
          stage.setScene(scene);
          stage.show();  
+         
+         return 0;
      }
      
-    public static void chart() {
+    public static int chart() {
     	 // add chart
     	 	//Defining the x axis
     	      Stage stage_chart = new Stage();
@@ -265,6 +276,8 @@ public class Output{
     		   
     	      //Displaying the contents of the stage 
     	      stage_chart.show();
+    	      
+    	      return 0;
      }
     
     public static class Student{
