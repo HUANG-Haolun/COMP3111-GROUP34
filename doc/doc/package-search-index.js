@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"atu.input"},{"l":"atu.process"},{"l":"所有程序包","u":"allpackages-index.html"}];updateSearchResults();
+packageSearchIndex = [{"l":"atu.input"},{"l":"atu.output"},{"l":"atu.process"},{"l":"所有程序包","u":"allpackages-index.html"}];updateSearchResults();
