@@ -79,6 +79,7 @@ public class Output{
      
     public static void table(String input_name) {
     	Person Person_in = null;
+        System.out.println(input_name);
     	
     	for(int i=0 ; i < students.size() ; i++) {
     		String iter_name = students.get(i).getStudentname();
@@ -86,33 +87,40 @@ public class Output{
     			Person_in = students.get(i);
     			break;
     		}
-    		System.out.println(students.get(i).getStudentname());
     	}
     	
     	if(Person_in == null) {
     		return;
     	}
     	
-    	 TableView table = new TableView();
+    	TableView table = new TableView();
         int teamID = Person_in.get_team_id();
-        Team team = teamlist[teamID];
+        Team team = teamlist[teamID-1];
         
         //  team overall info
          String teamid = String.valueOf(team.get_teamid());
          String leader_name = Person_in.getStudentname();
          String leader_id = String.valueOf(Person_in.getStudentid());
          int member_num = team.get_num();
+         String k1_average = String.valueOf(team.get_K1_average());
+         String k2_average = String.valueOf(team.get_K2_average());
+         
+         System.out.println(String.valueOf(teamID));
 
          // teammates array
-         Person A = team.get_A();
-         Person B = team.get_B();
-         Person C = team.get_C();
-         Person D = team.get_D();
+         Person A = team.get_A(); 
+         System.out.println(A.getStudentname());
+         Person B = team.get_B(); 
+         System.out.println(B.getStudentname());
+         Person C = team.get_C(); 
+         System.out.println(C.getStudentname());
+         Person D = team.get_D(); 
+//         System.out.println(D.getStudentname());
          List<Person> personList = new ArrayList<>();
          personList.add(A);
          personList.add(B);
          personList.add(C);
-         personList.add(D);
+//         personList.add(D);
 
          for(int i=0; i < member_num; i++){
             Person itr = personList.get(i);
@@ -148,13 +156,12 @@ public class Output{
     	 
 
 
-    	 ObservableList<Student> data =
+         ObservableList<Student> data =
                  FXCollections.observableArrayList(
-                     new Student(leader_id,leader_name,teamid,"1",A_name,A_K1,A_K2),
-                     new Student("","","","2",B_name,B_K1,B_K2),
-                     new Student("","","",ex_num,ex_name,ex_k1,ex_k2)
+                     new Student(leader_id,leader_name,teamid,"1",A_name,k1_average,k2_average),
+                     new Student("","","","2",B_name,"",""),
+                     new Student("","","",ex_num,ex_name,"","")
                  );
-
     	 
     	 Stage stage = new Stage();
     	 Scene scene = new Scene(new Group());

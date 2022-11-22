@@ -134,6 +134,8 @@ public class Output{
          String leader_name = Person_in.getStudentname();
          String leader_id = String.valueOf(Person_in.getStudentid());
          int member_num = team.get_num();
+         String k1_average = String.valueOf(team.get_K1_average());
+         String k2_average = String.valueOf(team.get_K2_average());
 
          // teammates array
          Person A = team.get_A();
@@ -182,11 +184,11 @@ public class Output{
 
     	 ObservableList<Student> data =
                  FXCollections.observableArrayList(
-                     new Student(leader_id,leader_name,teamid,"1",A_name,A_K1,A_K2),
-                     new Student("","","","2",B_name,B_K1,B_K2),
-                     new Student("","","",ex_num,ex_name,ex_k1,ex_k2)
+                     new Student(leader_id,leader_name,teamid,"1",A_name,k1_average,k2_average),
+                     new Student("","","","2",B_name,"",""),
+                     new Student("","","",ex_num,ex_name,"","")
                  );
-
+    	 
     	 
     	 Stage stage = new Stage();
     	 Scene scene = new Scene(new Group());
