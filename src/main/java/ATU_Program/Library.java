@@ -8,7 +8,7 @@ import java.util.List;
 
 import atu.input.*;
 import atu.process.*;
-import atu.output.*;
+import ATU_Program.Output.*;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
