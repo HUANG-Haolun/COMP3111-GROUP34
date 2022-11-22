@@ -56,9 +56,9 @@ import java.util.List;
 public class Output{
 	
 //	 private static TableView table = new TableView();
-	 public static Team[] teamlist;
-	 public static List<Person> students;
-	 public static List<Person> sort;
+	 private static Team[] teamlist;
+	 private static List<Person> students;
+	 private static List<Person> sort;
 
 	 public static void createList(Team[] teamList, List<Person> STUdents, List<Person> decending) {
 		 teamlist = teamList;
