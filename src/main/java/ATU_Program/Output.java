@@ -90,7 +90,7 @@ public class Output{
     	}
     	
     	if(Person_in == null) {
-    		return;
+    		return 1;
     	}
     	
     	TableView table = new TableView();
