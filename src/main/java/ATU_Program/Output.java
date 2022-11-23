@@ -80,6 +80,10 @@ public class Output{
     public static int table(String input_name) {
     	Person Person_in = null;
         System.out.println(input_name);
+        
+        if(students == null) {
+        	return 1;
+        }
     	
     	for(int i=0 ; i < students.size() ; i++) {
     		String iter_name = students.get(i).getStudentname();
@@ -90,7 +94,7 @@ public class Output{
     	}
     	
     	if(Person_in == null) {
-    		return;
+    		return 1;
     	}
     	
     	TableView table = new TableView();
@@ -228,6 +232,8 @@ public class Output{
      
     public static int chart() {
     	 // add chart
+    		
+    	
     	 	//Defining the x axis
     	      Stage stage_chart = new Stage();
     	      NumberAxis xAxis = new NumberAxis(0,100,1); 
@@ -249,7 +255,7 @@ public class Output{
     	      series2.setName("K2"); 
     	      
 //    	      System.out.printf("size = %d",sort.size());
-
+    	      
               for(int i=0 ; i < sort.size() ; i++){
                 int num = i+1;
                 float k1 = sort.get(i).getK1energy();
@@ -290,7 +296,7 @@ public class Output{
             private final String k2;
     
             
-            private Student(String Mid, String Mname, String Team_num,
+            public Student(String Mid, String Mname, String Team_num,
                     String Memid, String Name, String K1, String K2) 
             {
                 this.mid = Mid;
