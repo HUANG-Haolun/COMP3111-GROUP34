@@ -1,1 +1,0 @@
-typeSearchIndex = [{"p":"atu.process","l":"Engine"},{"p":"atu.input","l":"PeopleList"},{"p":"atu.input","l":"Person"},{"p":"atu.input","l":"Statistics"},{"p":"atu.process","l":"Team"},{"p":"atu.input","l":"UIApplication"},{"l":"所有类","u":"allclasses-index.html"}];updateSearchResults();
