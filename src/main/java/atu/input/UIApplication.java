@@ -1,5 +1,13 @@
 package atu.input;
-
+/**
+ * Created by HUANG Haolun on 2022/10/20.
+ * this is for showing the input data in the GUI
+ * @author HUANG Haolun(hhuangbl@connect.ust.hk)
+ * @version 1.0
+ * @since 1.0
+ * @see atu.input.Person
+ * @see atu.input.Statistics
+ */
 import java.io.*;
 import javafx.application.Application;
 import javafx.beans.property.SimpleStringProperty;
@@ -16,15 +24,26 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import atu.input.*;
-
+/**
+ * This class is used to show the input data in the GUI.
+ */
 public class UIApplication{
     private static TableView<Statistics> stat_table = new TableView<Statistics>();
     private static TableView<Person> person_table = new TableView<Person>();
 
     private final static ObservableList<Statistics> stat_data = FXCollections.observableArrayList();
+    
     private final static ObservableList<Person> person_data = FXCollections.observableArrayList();
+    
     public static final String delimiter = ",";
+
     public static final String quotation = "\"";
+
+    /**
+     * This method is used to read the csv file and store the data in the table.
+     * @param csvFile The name of the csv file.
+     * @return PeopleList The data of the csv file.
+     */
     public static PeopleList read(String csvFile) {
         System.out.print("\n");
         PeopleList students = new PeopleList();
@@ -96,6 +115,9 @@ public class UIApplication{
         return students;
     }
     
+    /**
+     * This method is used to show the data in the GUI.
+     */
     public static void inputUI(){
     	Stage stage_stat = new Stage();
         Scene scene_stat = new Scene(new Group());
