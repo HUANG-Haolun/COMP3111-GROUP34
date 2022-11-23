@@ -25,6 +25,9 @@ public class outputUI {
 
     @FXML
     private TextField textbox;
+
+    @FXML
+    private TextField textbox2;
     
     /**
      * The method to handle the event when clicking the button
@@ -33,7 +36,8 @@ public class outputUI {
     @FXML
     void pressButton(ActionEvent event) {
     	String input = textbox.getText();
+    	String input_name = textbox2.getText();
     	// Output.chart();
-    	Output.table(input);
+    	Output.table(input,input_name);
     }
 }
