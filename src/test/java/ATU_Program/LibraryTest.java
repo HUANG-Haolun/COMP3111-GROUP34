@@ -220,9 +220,9 @@ public class LibraryTest {
 		assertEquals(0, testList.size());
 	}
 
-	@Test
-	public void testRead() {
-		UIApplication.read(csvFile);
-		assertEquals(12, UIApplication.read(csvFile).getk3t1());
-	}
+//	@Test
+//	public void testRead() {
+//		UIApplication.read(csvFile);
+//		assertEquals(12, UIApplication.read(csvFile).getk3t1());
+//	}
 }

@@ -79,7 +79,6 @@ public class Output{
      
     public static int table(String input_name) {
     	Person Person_in = null;
-        System.out.println(input_name);
         
         if(students == null) {
         	return 1;
@@ -109,17 +108,12 @@ public class Output{
          String k1_average = String.valueOf(team.get_K1_average());
          String k2_average = String.valueOf(team.get_K2_average());
          
-         System.out.println(String.valueOf(teamID));
 
          // teammates array
          Person A = team.get_A(); 
-         System.out.println(A.getStudentname());
          Person B = team.get_B(); 
-         System.out.println(B.getStudentname());
          Person C = team.get_C(); 
-         System.out.println(C.getStudentname());
          Person D = team.get_D(); 
-//         System.out.println(D.getStudentname());
          List<Person> personList = new ArrayList<>();
          personList.add(A);
          personList.add(B);
@@ -254,7 +248,6 @@ public class Output{
     	      XYChart.Series series2 = new XYChart.Series(); 
     	      series2.setName("K2"); 
     	      
-//    	      System.out.printf("size = %d",sort.size());
     	      
               for(int i=0 ; i < sort.size() ; i++){
                 int num = i+1;
