@@ -88,6 +88,8 @@
             <Button fx:id="button1" layoutX="444.0" layoutY="175.0" mnemonicParsing="false" onAction="#pressButton" text="hit me" />
             <TextField fx:id="textbox" layoutX="245.0" layoutY="175.0" />
             <Label fx:id="inputbox" layoutX="131.0" layoutY="179.0" text="your name" />
+            <Label layoutX="118.0" layoutY="222.0" text="your student id" />
+            <TextField fx:id="textbox2" layoutX="246.0" layoutY="218.0" />
       </children>
     </AnchorPane>
   </children>

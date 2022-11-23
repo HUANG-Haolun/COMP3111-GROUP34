@@ -20,12 +20,14 @@ public class LibraryTest {
 	private float[] k2_energy = { 0, 100, 0 };
 	String csvFile = ".\\csv\\\\Sample Student Data File.csv";
 	Person testStu;
+	Person testStu1;
 	Statistics testStat;
 	PeopleList testList;
 
 	@Before
 	public void setUp() throws Exception {
 		testStu = new Person("20760735", "HUANG Haolun", "50", "50", "1", "1", "0", "hellow", "26");
+		testStu1 = new Person("20760735", "HUANG Haolun", "50", "50", "1", "1", "", "hellow", "26");
 		testStat = new Statistics("entry", "value", "0");
 		testList = new PeopleList(k1_energy, k2_energy, 1, 1, 10);
 
@@ -101,6 +103,11 @@ public class LibraryTest {
 	public void testgetPref() {
 		assertEquals(0, testStu.getMypreference());
 	}
+	
+	@Test
+	public void testgetPref2() {
+		assertEquals(0, testStu1.getMypreference());
+	}
 
 	@Test
 	public void testSetPref() {
@@ -150,6 +157,11 @@ public class LibraryTest {
 	public void testSetIndex() {
 		testStat.setIndex("1");
 		assertEquals("1", testStat.getIndex());
+	}
+	
+	@Test
+	public void testgetTeam() {
+		assertEquals(0, testStu.get_team_id());
 	}
 
 	@Test

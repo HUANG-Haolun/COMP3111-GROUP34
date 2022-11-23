@@ -306,6 +306,30 @@ public class ProcessTest {
 		assertEquals(3,check_2.get_team(3).get_teamid());
 	}
 	
+	@Test
+	public void test_add_coverage() {
+		eight.setK2energy("3");
+		check_2.arrange_list(list_2);
+		check_2.arrange_K1(list_2);
+		check_2.arrange_K2(list_2);
+		check_2.arrange_K3(list_2);
+		check_2.form_team();
+		assertEquals(size_2,check_2.getsize());
+	}
+	
+	@Test
+	public void test_add_coverage2() {
+		eight.setMypreference("1");
+		two.setMypreference("1");
+		check_2.form_team();
+		check_1.form_team();
+		check_2.setList(list_0);
+		check_2.setsize(size_0);
+		assertEquals(list_0,check_2.get_list());
+		assertEquals(size_0,check_2.getsize());
+	}
+	
+	
 	//From here it test for the case where there is only one extra person
 	
 	@Test
