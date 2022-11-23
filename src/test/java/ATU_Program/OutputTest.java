@@ -58,14 +58,14 @@ public class OutputTest{
 
 
 
-//    @Test
-//    public void chartting(){
-//        assertEquals(1,Output.chart());
-//    }
+    @Test
+    public void chartting(){
+        assertEquals(1,Output.chart());
+    }
 
-//   @Test
-//   public void tableing(){
-//       assertEquals(1,Output.table("qwer"));
-//   }
+   @Test
+   public void tableing(){
+       assertEquals(1,Output.table("",""));
+   }
 
 }

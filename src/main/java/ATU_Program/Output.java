@@ -126,11 +126,10 @@ public class Output{
         			break;
         		}
         	}
+        } else {
+            return 1;
         }
         
-    	
-    	
-    	
     	if(Person_in == null) {
     		return 1;
     	}
@@ -271,6 +270,9 @@ public class Output{
      */
     public static int chart() {
     	 // add chart
+    	if(sort == null) {
+    		return 1;
+    	}
     	 	//Defining the x axis
     	      Stage stage_chart = new Stage();
     	      NumberAxis xAxis = new NumberAxis(0,100,1); 
