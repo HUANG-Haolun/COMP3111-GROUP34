@@ -21,7 +21,6 @@ public class Library extends Application{
 		students =	UIApplication.read(csvFile);
 		Engine atuEngine = new Engine(students.size() ,students.getStudents());
 		atuEngine.form_team();
-		System.out.println(atuEngine.get_team(1).get_A().getStudentname());
 		
 		Team teamlist[] = atuEngine.get_teamlist();
 		List<Person> decending = atuEngine.get_list_descending();

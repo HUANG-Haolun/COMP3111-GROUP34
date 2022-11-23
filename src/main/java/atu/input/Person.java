@@ -220,10 +220,18 @@ public class Person {
         index.set(val);
     }
     
+    /**
+     * This method is used to get the team id of the person. 
+     * @return int The team id of the person.
+     */
     public int get_team_id() {
     	return this.team_id;
     }
     
+    /**
+     * This method is used to set the team id of the person. 
+     * @param num The team id of the person.
+     */
     public void set_team_id(int num) {
     	this.team_id = num;
     }
