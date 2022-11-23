@@ -24,7 +24,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import atu.input.*;
-
+/**
+ * This class is used to show the input data in the GUI.
+ */
 public class UIApplication{
     private static TableView<Statistics> stat_table = new TableView<Statistics>();
     private static TableView<Person> person_table = new TableView<Person>();
@@ -113,6 +115,9 @@ public class UIApplication{
         return students;
     }
     
+    /**
+     * This method is used to show the data in the GUI.
+     */
     public static void inputUI(){
     	Stage stage_stat = new Stage();
         Scene scene_stat = new Scene(new Group());

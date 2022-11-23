@@ -1,4 +1,12 @@
 package ATU_Program;
+/**
+ * The class is used to generate the chart and table using the students infomation
+ * 
+ * @author bhuangak
+ * @see ATU_Program.Output
+ * @version 1.0
+ * @since 1.0
+ */
 
 import java.io.*;
 
@@ -53,19 +61,34 @@ import atu.input.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The class is used to generate the chart and table using the students infomation
+ * after input the user information to find.
+ */
 public class Output{
 	
 //	 private static TableView table = new TableView();
 	 private static Team[] teamlist;
 	 private static List<Person> students;
 	 private static List<Person> sort;
-
+	 
+	 /**
+	  * The method is used to create the digits which are important to create the table and chart.
+	  * @param teamList The array of all teams.
+	  * @param STUdents The list of students who belong to the same group.
+	  * @param decending The list of all studens in their k1 energy in decending order.
+	  */
 	 public static void createList(Team[] teamList, List<Person> STUdents, List<Person> decending) {
 		 teamlist = teamList;
 		 students = STUdents;
 		 sort = decending;
 	 }
+	 
      
+	 /**
+	  * The method to generate students input GUI
+	  * @throws Exception To avoid some trouble.
+	  */
     public static void outputGUI() throws Exception{
     	 Stage stage = new Stage();
     	FXMLLoader loader = new FXMLLoader();
@@ -77,9 +100,15 @@ public class Output{
      	stage.show();
      }
      
+    
+    /**
+     * This method is used to build the chart graph
+     * @param input_name The user name who use to find his/her group
+     * @return int The chart graph
+     */
     public static int table(String input_name) {
     	Person Person_in = null;
-        
+    	
         if(students == null) {
         	return 1;
         }
@@ -96,7 +125,7 @@ public class Output{
     		return 1;
     	}
     	
-    	TableView table = new TableView();
+    	 TableView table = new TableView();
         int teamID = Person_in.get_team_id();
         Team team = teamlist[teamID-1];
         
@@ -107,19 +136,18 @@ public class Output{
          int member_num = team.get_num();
          String k1_average = String.valueOf(team.get_K1_average());
          String k2_average = String.valueOf(team.get_K2_average());
-         
+
 
          // teammates array
-         Person A = team.get_A(); 
-         Person B = team.get_B(); 
-         Person C = team.get_C(); 
-         Person D = team.get_D(); 
+         Person A = team.get_A();
+         Person B = team.get_B();
+         Person C = team.get_C();
+         Person D = team.get_D();
          List<Person> personList = new ArrayList<>();
          personList.add(A);
          personList.add(B);
          personList.add(C);
          personList.add(D);
-         
 
          for(int i=0; i < member_num; i++){
             Person itr = personList.get(i);
@@ -156,12 +184,13 @@ public class Output{
     	 
 
 
-         ObservableList<Student> data =
+    	 ObservableList<Student> data =
                  FXCollections.observableArrayList(
                      new Student(leader_id,leader_name,teamid,"1",A_name,k1_average,k2_average),
                      new Student("","","","2",B_name,"",""),
                      new Student("","","",ex_num,ex_name,"","")
                  );
+    	 
     	 
     	 Stage stage = new Stage();
     	 Scene scene = new Scene(new Group());
@@ -224,10 +253,13 @@ public class Output{
          return 0;
      }
      
+    
+    /**
+     * This method is used to build the chart graph
+     * @return the chart graph
+     */
     public static int chart() {
     	 // add chart
-    		
-    	
     	 	//Defining the x axis
     	      Stage stage_chart = new Stage();
     	      NumberAxis xAxis = new NumberAxis(0,100,1); 
@@ -248,7 +280,7 @@ public class Output{
     	      XYChart.Series series2 = new XYChart.Series(); 
     	      series2.setName("K2"); 
     	      
-    	      
+
               for(int i=0 ; i < sort.size() ; i++){
                 int num = i+1;
                 float k1 = sort.get(i).getK1energy();
@@ -279,6 +311,11 @@ public class Output{
     	      return 0;
      }
     
+    
+    /**
+     * The class is used to save the students information who are from the same
+     * team and load them to the table.
+     */
     public static class Student{
             private final String mid;
             private final String mname;
@@ -287,6 +324,18 @@ public class Output{
             private final String name;
             private final String k1;
             private final String k2;
+            
+            
+            /**
+             * This method is the constructor of the class Student for table input.
+             * @param Mid The student id of the input student.
+             * @param Mname The student name of the input student.
+             * @param Team_num The number of the input student's name.
+             * @param Memid The number of the teammate's order.
+             * @param Name The name of the teammates.
+             * @param K1 The k1 energy of the teammates.
+             * @param K2 The k2 energy of the teammates.
+             */
     
             
             public Student(String Mid, String Mname, String Team_num,
@@ -301,30 +350,59 @@ public class Output{
                 this.k2 = K2;
             }
             
+            
+            /** 
+             * This method is used to get the input student id.
+             * @return  String The input student id.
+             */
             public String getMid() {
                 return mid;
             }
-    
+            
+            /** 
+             * This method is used to get the name of the input student.
+             * @return String The student name of the input person.
+             */
             public String getMname() {
                 return mname;
             }
-    
+            
+            /** 
+             * This method is used to get the teammates' id of the input student.
+             * @return String The student id of the Teammates.
+             */
             public String getMemid() {
                 return memid;
             }
-    
+            
+            /** 
+             * This method is used to get the teammates' name of the input student.
+             * @return String The student name of the Teammates.
+             */
             public String getName() {
                 return name;
             }
-    
+            
+            /** 
+             * This method is used to get the team's id of the input student.
+             * @return String The team's id.
+             */
             public String getTeam_num() {
                 return team_num;
             }
     
+            /** 
+             * This method is used to get the student's k1 energy.
+             * @return String The K1 energy of the students.
+             */
             public String getK1() {
                 return k1;
             }
     
+            /** 
+             * This method is used to get the student's k2 energy.
+             * @return String The K2 energy of the students.
+             */
             public String getK2() {
                 return k2;
             }
