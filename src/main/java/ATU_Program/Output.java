@@ -106,20 +106,30 @@ public class Output{
      * @param input_name The user name who use to find his/her group
      * @return int The chart graph
      */
-    public static int table(String input_name) {
+    public static int table(String input_name, String input_id) {
     	Person Person_in = null;
     	
-        if(students == null) {
-        	return 1;
+        if(input_name != "") {
+        	for(int i=0 ; i < students.size() ; i++) {
+        		String iter_name = students.get(i).getStudentname();
+        		if(iter_name.equals(input_name) ) {
+        			Person_in = students.get(i);
+        			break;
+        		}
+        	}
+        } else if(input_id != "") {
+        	for(int i=0 ; i < students.size() ; i++) {
+        		String iter_id = students.get(i).getStudentid();
+        		if(iter_id.equals(input_id) ) {
+        			Person_in = students.get(i);
+        			input_name = students.get(i).getStudentname();
+        			break;
+        		}
+        	}
         }
+        
     	
-    	for(int i=0 ; i < students.size() ; i++) {
-    		String iter_name = students.get(i).getStudentname();
-    		if(iter_name.equals(input_name) ) {
-    			Person_in = students.get(i);
-    			break;
-    		}
-    	}
+    	
     	
     	if(Person_in == null) {
     		return 1;
@@ -197,8 +207,9 @@ public class Output{
          stage.setTitle("Project Team");
          stage.setWidth(800);
          stage.setHeight(500);
-  
-         final Label label = new Label("Project Team");
+         
+         String leader = team.get_Leader();
+         final Label label = new Label("Leader: "+leader);
          label.setFont(new Font("Arial", 20));
   
          table.setEditable(true);
